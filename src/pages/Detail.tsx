@@ -49,8 +49,8 @@ const Detail: React.FC = () => {
               <img src={site.thumbnailUrl} alt={site.name} className="w-full h-full object-cover opacity-80" />
               <div className="absolute inset-0 bg-stone-900/20 flex items-center justify-center">
                 <div className="px-6 py-3 bg-white/90 backdrop-blur rounded-full font-bold shadow-lg flex items-center gap-2">
-                   <div className="w-4 h-4 border-2 border-amber-700 border-t-transparent rounded-full animate-spin"></div>
-                   Loading 3D Experience...
+                  <div className="w-4 h-4 border-2 border-amber-700 border-t-transparent rounded-full animate-spin"></div>
+                  Loading 3D Experience...
                 </div>
               </div>
             </div>
@@ -64,9 +64,9 @@ const Detail: React.FC = () => {
             </button>
 
             <div className="absolute top-6 right-6">
-               <div className="bg-white/50 backdrop-blur-md p-3 rounded-2xl border border-white/20">
-                  <Box className="w-6 h-6 text-stone-700" />
-               </div>
+              <div className="bg-white/50 backdrop-blur-md p-3 rounded-2xl border border-white/20">
+                <Box className="w-6 h-6 text-stone-700" />
+              </div>
             </div>
           </model-viewer>
         </div>
@@ -77,7 +77,16 @@ const Detail: React.FC = () => {
             <div className="flex items-center gap-2 text-amber-700 font-bold tracking-widest text-xs uppercase mb-3">
               <MapPin className="w-3 h-3" /> {site.location}
             </div>
-            <h1 className="text-4xl md:text-6xl font-serif text-stone-900 mb-6">{site.name}</h1>
+            <h1 className="text-4xl md:text-6xl font-serif text-stone-900 mb-4">{site.name}</h1>
+            <a
+              href={`https://www.google.com/maps?q=${site.coordinates.lat},${site.coordinates.lng}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-full text-amber-800 text-sm font-medium transition-colors"
+            >
+              <MapPin className="w-3.5 h-3.5" />
+              {site.coordinates.lat.toFixed(4)}°, {site.coordinates.lng.toFixed(4)}°
+            </a>
           </div>
 
           <div className="space-y-6">
@@ -92,24 +101,24 @@ const Detail: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-               <div className="p-6 bg-stone-100 rounded-2xl">
-                  <span className="block text-xs uppercase text-stone-400 font-bold mb-1">Era</span>
-                  <span className="text-stone-800 font-serif text-xl">Historical</span>
-               </div>
-               <div className="p-6 bg-stone-100 rounded-2xl">
-                  <span className="block text-xs uppercase text-stone-400 font-bold mb-1">Status</span>
-                  <span className="text-stone-800 font-serif text-xl">World Heritage</span>
-               </div>
+              <div className="p-6 bg-stone-100 rounded-2xl">
+                <span className="block text-xs uppercase text-stone-400 font-bold mb-1">Era</span>
+                <span className="text-stone-800 font-serif text-xl">Historical</span>
+              </div>
+              <div className="p-6 bg-stone-100 rounded-2xl">
+                <span className="block text-xs uppercase text-stone-400 font-bold mb-1">Status</span>
+                <span className="text-stone-800 font-serif text-xl">World Heritage</span>
+              </div>
             </div>
           </div>
 
           <div className="pt-8 border-t border-stone-200">
-             <h4 className="font-bold text-stone-900 mb-4 uppercase text-sm tracking-widest">Controls</h4>
-             <div className="flex flex-wrap gap-3">
-                <span className="px-4 py-2 bg-stone-100 text-stone-600 text-xs rounded-full border border-stone-200">Rotate (1 Finger)</span>
-                <span className="px-4 py-2 bg-stone-100 text-stone-600 text-xs rounded-full border border-stone-200">Zoom (Pinch)</span>
-                <span className="px-4 py-2 bg-stone-100 text-stone-600 text-xs rounded-full border border-stone-200">AR (Click Button)</span>
-             </div>
+            <h4 className="font-bold text-stone-900 mb-4 uppercase text-sm tracking-widest">Controls</h4>
+            <div className="flex flex-wrap gap-3">
+              <span className="px-4 py-2 bg-stone-100 text-stone-600 text-xs rounded-full border border-stone-200">Rotate (1 Finger)</span>
+              <span className="px-4 py-2 bg-stone-100 text-stone-600 text-xs rounded-full border border-stone-200">Zoom (Pinch)</span>
+              <span className="px-4 py-2 bg-stone-100 text-stone-600 text-xs rounded-full border border-stone-200">AR (Click Button)</span>
+            </div>
           </div>
         </div>
       </div>
