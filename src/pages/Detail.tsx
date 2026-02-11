@@ -94,7 +94,10 @@ const Detail: React.FC = () => {
         <div className="flex flex-col space-y-8">
           <div>
             <div className="flex items-center gap-2 text-amber-700 font-bold tracking-widest text-xs uppercase mb-3">
-              <MapPin className="w-3 h-3" /> {site.location}
+              <MapPin className="w-3 h-3" />{" "}
+              {lang === "id" && site.location_id
+                ? site.location_id
+                : site.location}
             </div>
             <h1 className="text-4xl md:text-6xl font-serif text-stone-900 mb-4">
               {t(site.nameKey)}

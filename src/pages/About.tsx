@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Users, Code, Globe, Sparkles, Box, Server, LayoutTemplate } from 'lucide-react';
 
 const developers = [
@@ -32,6 +33,7 @@ const credits = [
 
 const About: React.FC = () => {
   const location = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (location.hash) {
@@ -54,10 +56,9 @@ const About: React.FC = () => {
           </svg>
         </div>
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-serif text-white mb-6">Preserving History, Digitally.</h1>
+          <h1 className="text-4xl md:text-6xl font-serif text-white mb-6">{t("about_header_title")}</h1>
           <p className="text-xl text-stone-300 font-light leading-relaxed max-w-2xl mx-auto">
-            HistoricaAR bridges the gap between ancient heritage and modern innovation,
-            bringing the world's greatest monuments directly into your hands.
+            {t("about_header_subtitle")}
           </p>
         </div>
       </section>
@@ -68,23 +69,21 @@ const About: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
           <div className="bg-white p-8 rounded-2xl shadow-xl border border-stone-100">
             <h3 className="font-serif text-2xl text-stone-800 mb-4 flex items-center gap-2">
-              <Globe className="w-6 h-6 text-amber-700" /> Project Vision
+              <Globe className="w-6 h-6 text-amber-700" /> {t("about_vision_title")}
             </h3>
             <p className="text-stone-600 leading-relaxed mb-6">
-              Our mission is to democratize access to historical education. By leveraging Web Augmented Reality (WebAR),
-              we eliminate the need for expensive hardware or heavy app downloads, allowing anyone with a smartphone
-              to explore and appreciate global heritage sites in immersive 3D.
+              {t("about_vision_desc")}
             </p>
             <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1 bg-amber-50 text-amber-800 text-xs font-bold rounded-full">Education</span>
-              <span className="px-3 py-1 bg-amber-50 text-amber-800 text-xs font-bold rounded-full">Preservation</span>
-              <span className="px-3 py-1 bg-amber-50 text-amber-800 text-xs font-bold rounded-full">Accessibility</span>
+              <span className="px-3 py-1 bg-amber-50 text-amber-800 text-xs font-bold rounded-full">{t("about_vision_tag1")}</span>
+              <span className="px-3 py-1 bg-amber-50 text-amber-800 text-xs font-bold rounded-full">{t("about_vision_tag2")}</span>
+              <span className="px-3 py-1 bg-amber-50 text-amber-800 text-xs font-bold rounded-full">{t("about_vision_tag3")}</span>
             </div>
           </div>
 
           <div className="bg-white p-8 rounded-2xl shadow-xl border border-stone-100">
             <h3 className="font-serif text-2xl text-stone-800 mb-6 flex items-center gap-2">
-              <Server className="w-6 h-6 text-amber-700" /> Technology Stack
+              <Server className="w-6 h-6 text-amber-700" /> {t("about_tech_title")}
             </h3>
             <div className="space-y-4">
               {techStack.map((tech, idx) => (
@@ -103,10 +102,10 @@ const About: React.FC = () => {
         {/* Team Section */}
         <div id="team" className="mb-20">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-serif text-stone-800 mb-4">Meet the Team</h2>
+            <h2 className="text-3xl font-serif text-stone-800 mb-4">{t("about_team_title")}</h2>
             <div className="w-24 h-1 bg-amber-700 mx-auto rounded-full mb-6"></div>
             <p className="text-stone-500 max-w-2xl mx-auto">
-              The creative minds and engineers behind HistoricaAR.
+              {t("about_team_subtitle")}
             </p>
           </div>
 
@@ -121,7 +120,7 @@ const About: React.FC = () => {
                 </div>
                 <h3 className="font-bold text-stone-800 text-sm mb-1">{name}</h3>
                 <span className="inline-block px-3 py-1 bg-amber-50 text-amber-800 text-[10px] font-bold uppercase tracking-wider rounded-full mt-2">
-                  Developer
+                  {t("about_team_role")}
                 </span>
               </div>
             ))}
@@ -131,8 +130,8 @@ const About: React.FC = () => {
         {/* Credits Section */}
         <div className="bg-stone-100 rounded-3xl p-8 md:p-12">
           <div className="text-center mb-10">
-            <h2 className="text-2xl font-serif text-stone-800 mb-2">3D Model Credits</h2>
-            <p className="text-stone-500 text-sm">We gratefully acknowledge the creators of the 3D models used in this project.</p>
+            <h2 className="text-2xl font-serif text-stone-800 mb-2">{t("about_credits_title")}</h2>
+            <p className="text-stone-500 text-sm">{t("about_credits_subtitle")}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -145,7 +144,7 @@ const About: React.FC = () => {
           </div>
           <div className="mt-8 text-center">
             <p className="text-xs text-stone-400">
-              All 3D models are used under Creative Commons Attribution (CC-BY) licenses from their respective sources.
+              {t("about_credits_license")}
             </p>
           </div>
         </div>
