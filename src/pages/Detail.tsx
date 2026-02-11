@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { sites } from '../data/sites';
 import { ArrowLeft, Box, Maximize2, MapPin, Info } from 'lucide-react';
 import '@google/model-viewer';
@@ -7,6 +8,8 @@ import '@google/model-viewer';
 const Detail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const site = sites.find(s => s.id === id);
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -16,8 +19,8 @@ const Detail: React.FC = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl font-serif mb-4">Site Not Found</h2>
-          <Link to="/" className="text-amber-700 hover:underline">Return Home</Link>
+          <h2 className="text-2xl font-serif mb-4">{t("detail_not_found")}</h2>
+          <Link to="/" className="text-amber-700 hover:underline">{t("detail_return_home")}</Link>
         </div>
       </div>
     );
@@ -26,7 +29,7 @@ const Detail: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <Link to="/" className="inline-flex items-center text-stone-500 hover:text-stone-800 transition-colors mb-8 group">
-        <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" /> Back to Collection
+        <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" /> {t("detail_back")}
       </Link>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -50,7 +53,7 @@ const Detail: React.FC = () => {
               <div className="absolute inset-0 bg-stone-900/20 flex items-center justify-center">
                 <div className="px-6 py-3 bg-white/90 backdrop-blur rounded-full font-bold shadow-lg flex items-center gap-2">
                   <div className="w-4 h-4 border-2 border-amber-700 border-t-transparent rounded-full animate-spin"></div>
-                  Loading 3D Experience...
+                  {t("detail_loading")}
                 </div>
               </div>
             </div>
@@ -60,7 +63,7 @@ const Detail: React.FC = () => {
               className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-amber-700 hover:bg-amber-600 text-white px-8 py-4 rounded-full font-bold shadow-2xl flex items-center gap-2 transition-all active:scale-95"
             >
               <Maximize2 className="w-5 h-5" />
-              VIEW IN YOUR SPACE
+              {t("detail_ar_btn")}
             </button>
 
             <div className="absolute top-6 right-6">
@@ -75,9 +78,9 @@ const Detail: React.FC = () => {
         <div className="flex flex-col space-y-8">
           <div>
             <div className="flex items-center gap-2 text-amber-700 font-bold tracking-widest text-xs uppercase mb-3">
-              <MapPin className="w-3 h-3" /> {site.location}
+              <MapPin className="w-3 h-3" /> {lang === 'id' && site.location_id ? site.location_id : site.location}
             </div>
-            <h1 className="text-4xl md:text-6xl font-serif text-stone-900 mb-4">{site.name}</h1>
+            <h1 className="text-4xl md:text-6xl font-serif text-stone-900 mb-4">{lang === 'id' && site.name_id ? site.name_id : site.name}</h1>
             <a
               href={`https://www.google.com/maps?q=${site.coordinates.lat},${site.coordinates.lng}`}
               target="_blank"
@@ -93,31 +96,31 @@ const Detail: React.FC = () => {
             <div className="bg-white/60 backdrop-blur-xl border border-stone-200 p-8 rounded-3xl shadow-sm">
               <div className="flex items-center gap-2 text-stone-800 font-bold mb-4">
                 <Info className="w-5 h-5 text-amber-700" />
-                <span>Historical Significance</span>
+                <span>{t("detail_significance")}</span>
               </div>
               <p className="text-stone-600 leading-relaxed text-lg italic">
-                "{site.description}"
+                "{lang === 'id' && site.description_id ? site.description_id : site.description}"
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="p-6 bg-stone-100 rounded-2xl">
-                <span className="block text-xs uppercase text-stone-400 font-bold mb-1">Era</span>
-                <span className="text-stone-800 font-serif text-xl">Historical</span>
+                <span className="block text-xs uppercase text-stone-400 font-bold mb-1">{t("detail_era_label")}</span>
+                <span className="text-stone-800 font-serif text-xl">{t("detail_era_value")}</span>
               </div>
               <div className="p-6 bg-stone-100 rounded-2xl">
-                <span className="block text-xs uppercase text-stone-400 font-bold mb-1">Status</span>
-                <span className="text-stone-800 font-serif text-xl">World Heritage</span>
+                <span className="block text-xs uppercase text-stone-400 font-bold mb-1">{t("detail_status_label")}</span>
+                <span className="text-stone-800 font-serif text-xl">{t("detail_status_value")}</span>
               </div>
             </div>
           </div>
 
           <div className="pt-8 border-t border-stone-200">
-            <h4 className="font-bold text-stone-900 mb-4 uppercase text-sm tracking-widest">Controls</h4>
+            <h4 className="font-bold text-stone-900 mb-4 uppercase text-sm tracking-widest">{t("detail_controls")}</h4>
             <div className="flex flex-wrap gap-3">
-              <span className="px-4 py-2 bg-stone-100 text-stone-600 text-xs rounded-full border border-stone-200">Rotate (1 Finger)</span>
-              <span className="px-4 py-2 bg-stone-100 text-stone-600 text-xs rounded-full border border-stone-200">Zoom (Pinch)</span>
-              <span className="px-4 py-2 bg-stone-100 text-stone-600 text-xs rounded-full border border-stone-200">AR (Click Button)</span>
+              <span className="px-4 py-2 bg-stone-100 text-stone-600 text-xs rounded-full border border-stone-200">{t("detail_control_rotate")}</span>
+              <span className="px-4 py-2 bg-stone-100 text-stone-600 text-xs rounded-full border border-stone-200">{t("detail_control_zoom")}</span>
+              <span className="px-4 py-2 bg-stone-100 text-stone-600 text-xs rounded-full border border-stone-200">{t("detail_control_ar")}</span>
             </div>
           </div>
         </div>
