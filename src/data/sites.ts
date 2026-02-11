@@ -15,9 +15,27 @@ export const sites: Site[] = [
     name: 'Al-Khazneh (Petra)',
     description: 'Al-Khazneh is one of the most elaborate temples in Petra, a city of the Nabataean Kingdom inhabited by the Arabs in ancient times. As with most of the other buildings in this ancient desert city, including the Monastery, this structure was carved out of a sandstone rock face.',
     location: 'Petra, Jordan',
-    modelUrl: '/models/al-khazneh_-_petra_jordan.glb',
+    modelUrl: '/models/al-khazneh_-_petra_jordan-v4.glb',
     posterUrl: '/posters/petra.webp',
     thumbnailUrl: 'https://www.historyhit.com/app/uploads/bis-images/5160776/Petra-788x537.jpg'
+  },
+  {
+    id: 'great-wall',
+    name: 'Great Wall of China',
+    description: 'The Great Wall of China is a series of fortifications that were built across the historical northern borders of ancient Chinese states and Imperial China as protection against various nomadic groups. It is the longest man-made structure in the world.',
+    location: 'Northern China',
+    modelUrl: '/models/14th_century_great_wall.glb',
+    posterUrl: '/posters/great_wall.webp',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&q=80&w=800'
+  },
+  {
+    id: 'pyramids',
+    name: 'Pyramids of Giza',
+    description: 'The Great Pyramid of Giza is the largest Egyptian pyramid and the tomb of Fourth Dynasty pharaoh Khufu. Built in the early 26th century BC, it is the oldest of the Seven Wonders of the Ancient World, and the only one to remain largely intact.',
+    location: 'Giza, Egypt',
+    modelUrl: '/models/pyramid_of_menkaure_giza_pyramid_complex_egypt.glb',
+    posterUrl: '/posters/pyramids.webp',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&q=80&w=800'
   },
   {
     id: 'angkor-wat',
@@ -35,7 +53,7 @@ export const sites: Site[] = [
     location: 'Pisa, Italy',
     modelUrl: '/models/leaning_tower_of_pisa.glb',
     posterUrl: '/posters/pisa_tower.webp',
-    thumbnailUrl: 'https://www.historyhit.com/app/uploads/2020/07/Leaning-Tower-of-Pisa.jpg'
+    thumbnailUrl: 'https://images.visititaly.eu/uploads/articoli/evidenza/2024172219-24-ore-a-pisa-min.jpg'
   },
   {
     id: 'arc-de-triomphe',
@@ -51,7 +69,7 @@ export const sites: Site[] = [
     name: 'Eiffel Tower',
     description: 'The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889.',
     location: 'Paris, France',
-    modelUrl: '/models/eiffel_tower.glb',
+    modelUrl: '/models/eiffel_tower_model_3d_with_best_quality.glb',
     posterUrl: '/posters/eiffel_tower.webp',
     thumbnailUrl: 'https://choosewhere.com/public/images/fQpK5xb/945_630/shutterstock_710380270.webp'
   },
@@ -63,14 +81,5 @@ export const sites: Site[] = [
     modelUrl: '/models/colosseum__st_peters_basilica.glb',
     posterUrl: '/posters/colosseum_basilica.webp',
     thumbnailUrl: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&q=80&w=800'
-  },
-  {
-    id: 'temple-vespasian',
-    name: 'Temple of Vespasian',
-    description: 'The Temple of Vespasian and Titus is located in Rome at the western end of the Roman Forum. It is dedicated to the deified Vespasian and his son, the deified Titus. The structure is a classic example of Corinthian architecture.',
-    location: 'Rome, Italy',
-    modelUrl: '/models/romangreek_temple_vespasian_and_titus.glb',
-    posterUrl: '/posters/temple_vespasian.webp',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&q=80&w=800'
   }
 ];

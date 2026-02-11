@@ -10,7 +10,7 @@ const Home: React.FC = () => {
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-stone-900">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1548013146-72479768bbaa?auto=format&fit=crop&q=80&w=2000" 
+            src="/famous-arena-sunset-nimes.jpg" 
             alt="Historical Background" 
             className="w-full h-full object-cover opacity-40"
           />
