@@ -1,42 +1,79 @@
-import React from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
-import { History } from 'lucide-react';
+import React from "react";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { History } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import "./Switch.css";
 
 const Layout: React.FC = () => {
   const location = useLocation();
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   // Helper untuk scroll ke section jika di home, atau pindah ke home dulu
   const scrollToGuide = () => {
     // Jika kita sudah di home ('/'), biarkan default behavior anchor tag bekerja
-    if (location.pathname === '/') return;
+    if (location.pathname === "/") return;
 
     // Jika tidak, kita tidak preventDefault (biarkan pindah ke /#ar-guide)
+  };
+
+  const { t, i18n } = useTranslation();
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === "id" ? "en" : "id";
+    i18n.changeLanguage(newLang);
   };
 
   return (
     <div className="min-h-screen bg-stone-50 flex flex-col font-sans text-stone-900">
       <header className="bg-white/80 backdrop-blur-md border-b border-stone-200 sticky top-0 z-50">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <Link to="/" onClick={scrollToTop} className="flex items-center gap-2 group">
+          <Link
+            to="/"
+            onClick={scrollToTop}
+            className="flex items-center gap-2 group"
+          >
             <History className="w-8 h-8 text-amber-700 group-hover:rotate-12 transition-transform" />
             <span className="text-xl font-bold tracking-tight text-stone-800 uppercase">
               Historica<span className="text-amber-700">AR</span>
             </span>
           </Link>
           <div className="flex gap-6">
-            <Link to="/" onClick={scrollToTop} className="text-sm font-medium hover:text-amber-700 transition-colors">Home</Link>
+            <Link
+              to="/"
+              onClick={scrollToTop}
+              className="text-sm font-medium hover:text-amber-700 transition-colors"
+            >
+              {t("nav_home")}
+            </Link>
             <a
               href="/#ar-guide"
               onClick={scrollToGuide}
               className="text-sm font-medium hover:text-amber-700 transition-colors"
             >
-              AR Guide
+              {t("nav_guide")}
             </a>
-            <Link to="/about" onClick={scrollToTop} className="text-sm font-medium hover:text-amber-700 transition-colors">About</Link>
+            <Link
+              to="/about"
+              onClick={scrollToTop}
+              className="text-sm font-medium hover:text-amber-700 transition-colors"
+            >
+              {t("nav_about")}
+            </Link>
+          </div>
+          <div className="nav-right">
+            {/* Label di luar dihapus, karena teks sudah ada di dalam switch */}
+
+            <label className="switch">
+              <input
+                type="checkbox"
+                onChange={toggleLanguage}
+                checked={i18n.language === "en"}
+              />
+              <span className="slider"></span>
+            </label>
           </div>
         </nav>
       </header>
@@ -49,27 +86,64 @@ const Layout: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
-              <h3 className="text-white text-lg font-semibold mb-4">HistoricaAR</h3>
-              <p className="text-sm leading-relaxed">
-                Bringing the world's most iconic historical sites to your living room using cutting-edge WebAR technology.
-              </p>
+              <h3 className="text-white text-lg font-semibold mb-4">
+                HistoricaAR
+              </h3>
+              <p className="text-sm leading-relaxed">{t("footer_desc")}</p>
             </div>
             <div>
-              <h4 className="text-white text-md font-semibold mb-4">Quick Links</h4>
+              <h4 className="text-white text-md font-semibold mb-4">
+                {t("footer_quick_links")}
+              </h4>
               <ul className="space-y-2 text-sm">
-                <li><Link to="/" onClick={scrollToTop} className="hover:text-amber-500 transition-colors">Home</Link></li>
-                <li><a href="/#sites" className="hover:text-amber-500 transition-colors">Historical Sites</a></li>
-                <li><a href="/#ar-guide" className="hover:text-amber-500 transition-colors">AR Guide</a></li>
-                <li><Link to="/about" onClick={scrollToTop} className="hover:text-amber-500 transition-colors">About Us</Link></li>
+                <li>
+                  <Link
+                    to="/"
+                    onClick={scrollToTop}
+                    className="hover:text-amber-500 transition-colors"
+                  >
+                    {t("nav_home")}
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="/#sites"
+                    className="hover:text-amber-500 transition-colors"
+                  >
+                    {t("footer_historical_sites")}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/#ar-guide"
+                    className="hover:text-amber-500 transition-colors"
+                  >
+                    {t("footer_ar_guide")}
+                  </a>
+                </li>
+                <li>
+                  <Link
+                    to="/about"
+                    onClick={scrollToTop}
+                    className="hover:text-amber-500 transition-colors"
+                  >
+                    {t("footer_about")}
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>
               <h4 className="text-white text-md font-semibold mb-4">Connect</h4>
-              <Link to="/about#team" className="text-sm hover:text-amber-500 transition-colors">Meet the Team →</Link>
+              <Link
+                to="/about#team"
+                className="text-sm hover:text-amber-500 transition-colors"
+              >
+                Meet the Team →
+              </Link>
             </div>
           </div>
           <div className="border-t border-stone-800 pt-8 text-center text-xs uppercase tracking-widest">
-            © 2026 HistoricaAR. Preserving the Past, Shaping the Future.
+            © 2026 HistoricaAR. {t("footer_copyright_slogan")}
           </div>
         </div>
       </footer>
