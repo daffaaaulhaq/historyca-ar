@@ -1,21 +1,40 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
-import { Map, History } from "lucide-react";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { History } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import "./Switch.css";
+
 const Layout: React.FC = () => {
+  const location = useLocation();
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // Helper untuk scroll ke section jika di home, atau pindah ke home dulu
+  const scrollToGuide = () => {
+    // Jika kita sudah di home ('/'), biarkan default behavior anchor tag bekerja
+    if (location.pathname === "/") return;
+
+    // Jika tidak, kita tidak preventDefault (biarkan pindah ke /#ar-guide)
+  };
+
   const { t, i18n } = useTranslation();
 
-  // Fungsi untuk mengubah bahasa
   const toggleLanguage = () => {
     const newLang = i18n.language === "id" ? "en" : "id";
     i18n.changeLanguage(newLang);
   };
+
   return (
     <div className="min-h-screen bg-stone-50 flex flex-col font-sans text-stone-900">
       <header className="bg-white/80 backdrop-blur-md border-b border-stone-200 sticky top-0 z-50">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 group">
+          <Link
+            to="/"
+            onClick={scrollToTop}
+            className="flex items-center gap-2 group"
+          >
             <History className="w-8 h-8 text-amber-700 group-hover:rotate-12 transition-transform" />
             <span className="text-xl font-bold tracking-tight text-stone-800 uppercase">
               Historica<span className="text-amber-700">AR</span>
@@ -24,22 +43,25 @@ const Layout: React.FC = () => {
           <div className="flex gap-6">
             <Link
               to="/"
+              onClick={scrollToTop}
               className="text-sm font-medium hover:text-amber-700 transition-colors"
             >
               {t("nav_home")}
             </Link>
             <a
-              href="#"
+              href="/#ar-guide"
+              onClick={scrollToGuide}
               className="text-sm font-medium hover:text-amber-700 transition-colors"
             >
-              {t("nav_maps")}
+              {t("nav_guide")}
             </a>
-            <a
-              href="#"
+            <Link
+              to="/about"
+              onClick={scrollToTop}
               className="text-sm font-medium hover:text-amber-700 transition-colors"
             >
               {t("nav_about")}
-            </a>
+            </Link>
           </div>
           <div className="nav-right">
             {/* Label di luar dihapus, karena teks sudah ada di dalam switch */}
@@ -71,12 +93,13 @@ const Layout: React.FC = () => {
             </div>
             <div>
               <h4 className="text-white text-md font-semibold mb-4">
-                {t("footer_links")}
+                {t("footer_quick_links")}
               </h4>
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link
                     to="/"
+                    onClick={scrollToTop}
                     className="hover:text-amber-500 transition-colors"
                   >
                     {t("nav_home")}
@@ -84,7 +107,7 @@ const Layout: React.FC = () => {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/#sites"
                     className="hover:text-amber-500 transition-colors"
                   >
                     {t("footer_historical_sites")}
@@ -92,22 +115,31 @@ const Layout: React.FC = () => {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/#ar-guide"
                     className="hover:text-amber-500 transition-colors"
                   >
                     {t("footer_ar_guide")}
                   </a>
                 </li>
+                <li>
+                  <Link
+                    to="/about"
+                    onClick={scrollToTop}
+                    className="hover:text-amber-500 transition-colors"
+                  >
+                    {t("footer_about")}
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>
-              <h4 className="text-white text-md font-semibold mb-4">
-                {t("footer_contact")}
-              </h4>
-              <p className="text-sm">Email: info@historica-ar.com</p>
-              <div className="flex gap-4 mt-4">
-                <Map className="w-5 h-5 hover:text-amber-500 cursor-pointer" />
-              </div>
+              <h4 className="text-white text-md font-semibold mb-4">Connect</h4>
+              <Link
+                to="/about#team"
+                className="text-sm hover:text-amber-500 transition-colors"
+              >
+                Meet the Team →
+              </Link>
             </div>
           </div>
           <div className="border-t border-stone-800 pt-8 text-center text-xs uppercase tracking-widest">

@@ -7,6 +7,7 @@ const resources = {
     translation: {
       nav_home: "Home",
       nav_maps: "Maps",
+      nav_guide: "AR Guide",
       nav_about: "About",
 
       // Bagian Footer
@@ -15,7 +16,7 @@ const resources = {
       footer_quick_links: "Quick Links",
       footer_historical_sites: "Historical Sites",
       footer_ar_guide: "AR Guide",
-      footer_contact: "Contact",
+      footer_about: "About Us",
       footer_copyright_slogan: "Preserving the Past, Shaping the Future.",
     },
   },
@@ -23,6 +24,7 @@ const resources = {
     translation: {
       nav_home: "Beranda",
       nav_maps: "Peta",
+      nav_guide: "Panduan AR",
       nav_about: "Tentang",
 
       footer_desc:
@@ -30,7 +32,7 @@ const resources = {
       footer_quick_links: "Tautan Cepat",
       footer_historical_sites: "Situs Bersejarah",
       footer_ar_guide: "Panduan AR",
-      footer_contact: "Kontak",
+      footer_about: "Tentang Kami",
       footer_copyright_slogan: "Melestarikan Masa Lalu, Membentuk Masa Depan.",
     },
   },
