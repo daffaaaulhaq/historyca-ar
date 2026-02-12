@@ -8,7 +8,8 @@ import { useTranslation } from "react-i18next";
 const Detail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const site = sites.find((s) => s.id === id);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
 
   useEffect(() => {
     window.scrollTo(0, 0);
