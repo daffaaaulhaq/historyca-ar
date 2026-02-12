@@ -1,9 +1,7 @@
 export interface Site {
   id: string;
-  name: string;
-  name_id?: string;
-  description: string;
-  description_id?: string;
+  nameKey: string; // Dulu: name
+  descKey: string; // Dulu: description
   location: string;
   location_id?: string;
   coordinates: { lat: number; lng: number };
