@@ -189,7 +189,7 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: "id", // Bahasa default (bisa diubah ke "en")
+  lng: "en", // Default language is English
   interpolation: {
     escapeValue: false, // React sudah aman dari XSS
   },
